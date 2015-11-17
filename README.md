@@ -12,7 +12,7 @@ Quick Start for contributors
 
 ```
 $ git clone git://github.com/melvincarvalho/dashboard
-$ cd contacts
+$ cd dashboard
 $ sudo npm -g install bower
 $ bower install
 ```
