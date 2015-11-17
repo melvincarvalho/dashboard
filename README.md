@@ -1,17 +1,17 @@
-[![Stories in Ready](https://badge.waffle.io/melvincarvalho/chess.png?label=ready&title=Ready)](https://waffle.io/melvincarvalho/chess)
-# chess
+[![Stories in Ready](https://badge.waffle.io/melvincarvalho/dashboard.png?label=ready&title=Ready)](https://waffle.io/melvincarvalho/dashboard)
+# dashboard
 
-[![Join the chat at https://gitter.im/melvincarvalho/chess](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/melvincarvalho/chess?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/melvincarvalho/dashboard](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/melvincarvalho/dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-chess game based on the SoLiD platform
+dashboard game based on the SoLiD platform
 
-Running live here: https://melvincarvalho.github.io/chess/
+Running live here: https://melvincarvalho.github.io/dashboard/
 
 Quick Start for contributors
 ----------------------------
 
 ```
-$ git clone git://github.com/melvincarvalho/chess
+$ git clone git://github.com/melvincarvalho/dashboard
 $ cd contacts
 $ sudo npm -g install bower
 $ bower install
