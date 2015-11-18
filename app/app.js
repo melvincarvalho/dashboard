@@ -68,6 +68,7 @@ App.controller('Main', function($scope, $http, $location, $timeout, ngAudio, LxN
     $scope.loggedIn = false;
     $scope.loginTLSButtonText = "Login";
     $scope.audio = ngAudio.load('audio/button-3.mp3');
+    $scope.ponts = [];
   };
 
 
@@ -276,6 +277,9 @@ App.controller('Main', function($scope, $http, $location, $timeout, ngAudio, LxN
    * Render the board
    */
   $scope.renderStats = function () {
+    if ($scope.stats) {
+      $scope.points = $scope.stats.split('-');      
+    }
   };
 
   /**
