@@ -37,6 +37,7 @@ App.controller('Main', function($scope, $http, $location, $timeout, ngAudio, LxN
   var f,g;
 
   var defaultStorageURI = 'https://melvin.databox.me/Public/dashboard/stats.ttl';
+  var defaultTimelineURI = 'https://melvin.databox.me/Public/timeline/';
 
   // INIT
   /**
@@ -148,7 +149,7 @@ App.controller('Main', function($scope, $http, $location, $timeout, ngAudio, LxN
   * @param  {String} user the logged in user
   */
   $scope.loginSuccess = function(user) {
-    $scope.notify('Login Successful!');
+    //$scope.notify('Login Successful!');
     $scope.loggedIn = true;
     $scope.user = user;
     $scope.fetchAll();
@@ -169,6 +170,7 @@ App.controller('Main', function($scope, $http, $location, $timeout, ngAudio, LxN
   //
   $scope.fetchAll = function() {
     $scope.fetchStats();
+    $scope.fetchTimeline();
   };
 
   /**
@@ -212,6 +214,22 @@ App.controller('Main', function($scope, $http, $location, $timeout, ngAudio, LxN
     }
     f.nowOrWhenFetched(seeAlso, undefined, function(ok, body) {
       console.log('seeAlso fetched from : ' + seeAlso);
+    });
+
+  };
+
+  /**
+  * fetchTimeline fetches the see also
+  */
+  $scope.fetchTimeline = function() {
+    var timeline = defaultTimelineURI;
+    if ($location.search().timeline) {
+      timeline = $location.search().timeline;
+    }
+    var today = new Date().toISOString().substr(0,10);
+    var uri = timeline + today + '/*';
+    f.nowOrWhenFetched(uri, undefined, function(ok, body) {
+      console.log('timeline fetched from : ' + uri);
     });
 
   };
@@ -267,18 +285,37 @@ App.controller('Main', function($scope, $http, $location, $timeout, ngAudio, LxN
 
   // RENDER
   /**
-  * render screen
+  * Render screen
   */
   $scope.render = function() {
     $scope.renderStats();
+    $scope.renderTimeline();
   };
 
   /**
-   * Render the board
+   * Render the stats
    */
   $scope.renderStats = function () {
     if ($scope.stats) {
-      $scope.points = $scope.stats.split('-');      
+      $scope.points = $scope.stats.split('-');
+    }
+  };
+
+  /**
+   * Render the timeline
+   */
+  $scope.renderTimeline = function () {
+    var p = g.statementsMatching(null, null, SIOC('Post'));
+    $scope.posts = [];
+    for (var i=0; i<p.length;i++) {
+      var subject = p[i].subject;
+      var created = g.any(subject, DCT('created'));
+      var creator = g.any(subject, DCT('creator'));
+      var content = g.any(subject, SIOC('content'));
+      var author  = g.any(subject, MBLOG('author'));
+
+      $scope.posts.push([created.value.substring(12, 19), creator.uri, content.value]);
+
     }
   };
 
