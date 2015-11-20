@@ -8,7 +8,8 @@ var __scope;
 */
 var App = angular.module('Dashboard', [
   'ngAudio',
-  'lumx'
+  'lumx',
+  'angularMoment'
 ]);
 
 App.config(function($locationProvider) {
@@ -314,9 +315,20 @@ App.controller('Main', function($scope, $http, $location, $timeout, ngAudio, LxN
       var content = g.any(subject, SIOC('content'));
       var author  = g.any(subject, MBLOG('author'));
 
-      $scope.posts.push([created.value.substring(11, 19), creator.uri, content.value]);
+      $scope.posts.push([created.value, creator.uri, content.value]);
+
 
     }
+
+    $scope.posts = $scope.posts.sort(function(a, b) {
+      createda = a[0];
+      createdb = b[0];
+      //if ( !createda || !createdb ) return;
+      a = new Date(createda);
+      b = new Date(createdb);
+      return a>b ? -1 : a<b ? 1 : 0;
+    });
+
   };
 
   /**

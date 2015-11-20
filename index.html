@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>RDash AngularJS</title>
+  <title>Solid Dashboard</title>
   <!-- STYLES -->
   <link rel="stylesheet" href="lib/css/main.min.css"/>
   <!-- SCRIPTS -->
@@ -17,6 +17,9 @@
 
   <script src="vendor/rdflib.min.js"></script>
   <script src="vendor/common.js"></script>
+
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/angular-moment/angular-moment.js"></script>
 
   <!-- App -->
   <script src="app/app.js"></script>
@@ -212,9 +215,9 @@
           <div>
             <h3>Activity</h3>
 
-            <table>
+            <table class="table">
               <tr ng-repeat="n in posts">
-                <td>{{n[0]}}</td>
+                <td am-time-ago="n[0]">{{n[0]}}</td>
                 <td>{{n[2]}}</td>
               </tr>
             </table>
