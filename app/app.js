@@ -231,6 +231,7 @@ App.controller('Main', function($scope, $http, $location, $timeout, ngAudio, LxN
     var uri = timeline + today + '/*';
     f.nowOrWhenFetched(uri, undefined, function(ok, body) {
       console.log('timeline fetched from : ' + uri);
+      $scope.render();
     });
 
   };
