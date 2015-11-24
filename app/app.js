@@ -316,7 +316,7 @@ App.controller('Main', function($scope, $http, $location, $timeout, ngAudio, LxN
       var content = g.any(subject, SIOC('content'));
       var author  = g.any(subject, MBLOG('author'));
 
-      $scope.posts.push([created.value, creator.uri, content.value]);
+      $scope.posts.push([created.value, creator.uri, content.value, subject.uri]);
 
 
     }

@@ -218,7 +218,7 @@
 
             <table class="table">
               <tr ng-repeat="n in posts">
-                <td am-time-ago="n[0]">{{n[0]}}</td>
+                <td><a href="{{n[3]}}" target="_blank" am-time-ago="n[0]"></a></td>
                 <td>{{n[2]}}</td>
               </tr>
             </table>
